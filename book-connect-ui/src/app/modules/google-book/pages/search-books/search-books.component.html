@@ -1,0 +1,99 @@
+<div *ngIf="bookRes.content" style="text-align: center;">
+  <img src="https://karlmoeller.files.wordpress.com/2023/02/google_books_logo_2020.svg_.png" alt="" class="gBook1">
+  <hr>
+</div>
+<div *ngIf="!bookRes.content" style="text-align: center;">
+  <img
+    src="https://1.bp.blogspot.com/-XjOg6l4nUZ4/WPpnArs0GXI/AAAAAAAAL0I/Rj9useavkuA87cgS6B099kDF2la-HGPDACLcB/s1600/google-books.png"
+    class="gBook" alt="Google Book Search Beta logo">
+  <div class="wrapper">
+    <div class="blue ball"></div>
+    <div class="red ball"></div>
+    <div class="yellow ball"></div>
+    <div class="green ball"></div>
+  </div>
+
+</div>
+
+<div class="d-flex justify-content-start gap-2 flex-wrap">
+  <div *ngFor="let book of bookRes.content" class="product-card">
+    <div class="badge">{{ book.volumeInfo?.categories }}</div>
+    <div class="product-tumb">
+
+      <div class="product-tumb">
+        <img
+          [src]="book.volumeInfo?.imageLinks?.thumbnail || 'https://westsiderc.org/wp-content/uploads/2019/08/Image-Not-Available.png'"
+          class="product-image" alt="">
+      </div>
+
+    </div>
+    <div class="product-details">
+      <div><a class="card-heading custom-link" style="color: black" target="_blank"
+              [href]="book.volumeInfo?.infoLink"><i
+        style="color: black" class="fa fa-book">&nbsp;</i>{{ book.volumeInfo?.title }}</a></div>
+      <div *ngIf="book.volumeInfo?.subtitle" class="card-text">{{ book.volumeInfo?.subtitle }}</div>
+      <div *ngIf="book.volumeInfo?.authors" class="card-text" style="color: #333a48; display: inline-block;">
+        <i class="fa fa-pen"></i> {{ book.volumeInfo?.authors }}
+      </div>
+      <hr>
+      <div class="product-bottom-details-next small">
+        <div *ngIf="book.saleInfo?.retailPrice?.amount" class="product-price"><i
+          class="fas fa-indian-rupee-sign"></i>{{ book.saleInfo?.retailPrice?.amount }}
+        </div>
+        <div *ngIf="!(book.saleInfo?.retailPrice?.amount)" class="product-sale">{{ book.saleInfo?.saleability }}</div>
+        <div class="product-links">
+         <span class="fw-bolder" style="font-size: 1.2rem;">
+  <i class="fas fa-star fa-sm" style="color: #FFD43B;"></i>{{ book.volumeInfo?.averageRating }}
+</span>
+          <a [href]="book.volumeInfo?.previewLink" title="Preview" class="preview-link"
+             [class.disabled]="!isPreviewAvailable(book)" [attr.disabled]="!isPreviewAvailable(book) ? true : null"
+             target="_blank">
+            <i class="fa fa-eye"></i>
+          </a>
+
+          <a *ngIf="book.saleInfo?.retailPrice?.amount" [href]="book.saleInfo?.buyLink" title="Buy this book"
+             class="buy-link" target="_blank">
+            <i class="fa fa-shopping-cart"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="d-flex justify-content-center mt-3">
+  <nav aria-label="Page navigation example" class="margin-bottom-large">
+    <ul class="pagination justify-content-center pagination-lg">
+      <li class="page-item">
+        <a (click)="goToFirst(); scrollToTop()" [class.disabled]="startIndex==0" class="page-link"
+           href="javascript:void (0)"
+           aria-label="First">
+          <i class="fa-solid fa-angle-double-left"></i>
+        </a>
+      </li>
+      <li class="page-item">
+        <a (click)="goToPrevious(); scrollToTop()" [class.disabled]="startIndex==0" class="page-link"
+           href="javascript:void (0)"
+           aria-label="Previous">
+          <i class="fa-solid fa-angle-left"></i>
+        </a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="javascript:void (0)">{{ bookRes.number }}</a>
+      </li>
+      <li class="page-item">
+        <a (click)="goToNext(); scrollToTop()" [class.disabled]="isLastPage" class="page-link"
+           href="javascript:void (0)"
+           aria-label="Next">
+          <i class="fa-solid fa-angle-right"></i>
+        </a>
+      </li>
+      <!--      <li class="page-item">-->
+      <!--        <a (click)="goToLast();  scrollToTop()"  [class.disabled]="isLastPage" class="page-link"-->
+      <!--           href="javascript:void (0)"-->
+      <!--           aria-label="Last">-->
+      <!--          <i class="fa-solid fa-angle-double-right"></i>-->
+      <!--        </a>-->
+      <!--      </li>-->
+    </ul>
+  </nav>
+</div>

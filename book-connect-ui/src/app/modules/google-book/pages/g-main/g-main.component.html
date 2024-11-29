@@ -1,0 +1,56 @@
+<div class="d-flex flex-column gap-1">
+  <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand text-white" href="javascript:void(0)">BC!</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a (click)="Home()" class="nav-link text-white" routerLink="my-books">
+              <i class="fas fa-book"></i>My Library
+            </a>
+          </li>
+        </ul>
+
+        <form class="d-flex gap-2 object-fit-lg-scale-scale align-items-center" role="search">
+          <select [(ngModel)]="sortBy" name="sortBy" class="form-select form-select-sm custom-width"
+                  aria-label="Sort By">
+            <option value="sort"   >Sort By</option>
+            <option value="relevance">Relevance</option>
+            <option value="newest">Newest</option>
+          </select>
+          <select [(ngModel)]="filter" name="orderBy" class="form-select form-select-sm custom-width"
+                  aria-label="Order By">
+            <option value="filter"  >Filter</option>
+            <option value="partial">Partial</option>
+            <option value="full">Full</option>
+            <option value="free-ebooks">Free-ebooks</option>
+            <option value="paid-ebooks">Paid-ebooks</option>
+            <option value="ebooks">ebooks</option>
+          </select>
+          <input [(ngModel)]="queryPass" class="form-control form" name="query" type="search"
+                 placeholder="Find a Google book"
+                 aria-label="Search">
+          <button (click)="searchGoogleBooks()" class="btn btn-outline-success" type="submit"><i
+            class="fas fa-search"></i>
+          </button>
+          <span>Welcome</span>
+          <span class="text-capitalize fw-bold">Siddharth</span>
+          <button (click)="logout()" class="btn btn-link" type="submit"><i class="fas fa-sign-out"></i></button>
+        </form>
+
+      </div>
+    </div>
+  </nav>
+  <div class="pe-2 ps-2">
+    <app-search-books
+      [query]="query"
+      [Filter]="filter"
+      [Sort]="sortBy"
+    ></app-search-books>
+    <router-outlet></router-outlet>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+spring:
+  application:
+    name: book-connect-api
+  profiles:
+    active: dev
+  servlet:
+    multipart:
+      max-file-size: 50MB
+springdoc:
+  default-produces-media-type: application/json
+  swagger-ui:
+
+server:
+  servlet:
+    context-path: /api/v1/

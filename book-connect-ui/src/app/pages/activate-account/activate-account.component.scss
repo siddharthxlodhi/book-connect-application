@@ -1,0 +1,166 @@
+.card {
+  width: 350px;
+  padding: 10px;
+  border-radius: 20px;
+  background: #fff;
+  border: none;
+  height: 350px;
+  position: relative;
+
+}
+
+.container {
+  height: 100vh;
+}
+
+body {
+  background: #eee;
+}
+
+.mobile-text {
+  color: #989696b8;
+  font-size: 15px;
+}
+
+.form-control {
+  margin-right: 12px;
+}
+
+.form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #48c5e3;
+  outline: 0;
+  box-shadow: none;
+}
+
+.cursor {
+  cursor: pointer;
+}
+
+#Mycard {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  margin: 0;
+}
+#card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+#upper-side {
+  background-color:#039BE5;
+  color: white;
+  padding: 20px;
+}
+#upper-side svg {
+  width: 50px;
+  height: 50px;
+}
+#status {
+  font-size: 24px;
+  margin: 10px 0 0;
+}
+#lower-side {
+  padding: 20px;
+}
+#message {
+  font-size: 16px;
+  margin: 0;
+}
+#contBtn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color:#039BE5;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.btn {
+  box-shadow: none;
+  width: 100%;
+  height: 40px;
+  background-color: #03A9F4;
+  color: #fff;
+  border-radius: 25px;
+  box-shadow: 3px 3px 3px #b1b1b1,
+  -3px -3px 3px #fff;
+  letter-spacing: 1.3px;
+}
+
+.btn:hover {
+  background-color: #039BE5;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+//------------------------------------------------------------------------------Failure
+#MyFailureCard {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #f4f4f4;
+  margin: 0;
+}
+#failure-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  text-align: center;
+  animation: fadeIn 0.5s ease-in-out;
+}
+#failure-upper-side {
+  background-color: #f44336;
+  color: white;
+  padding: 20px;
+}
+#failure-upper-side svg {
+  width: 50px;
+  height: 50px;
+}
+#failure-status {
+  font-size: 24px;
+  margin: 10px 0 0;
+}
+#failure-lower-side {
+  padding: 20px;
+}
+#failure-message {
+  font-size: 16px;
+  margin: 0;
+}
+#failure-reasons {
+  text-align: left;
+  margin-top: 10px;
+}
+#failure-reasons ul {
+  padding-left: 20px;
+}
+#failure-contBtn {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #f44336;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

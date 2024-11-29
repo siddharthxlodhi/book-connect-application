@@ -1,0 +1,61 @@
+<div class="container register">
+  <h4>Manage Book</h4>
+  <hr>
+  <div class="alert alert-danger mt-2" role="alert" *ngIf="errorMsg.length">
+    <p class="p-0 m-0" *ngFor="let msg of errorMsg">{{ msg }}</p>
+  </div>
+  <div class="container mt-auto">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="form-group mb-3">
+          <img
+            [src]="selectedPicture || 'https://img.freepik.com/premium-vector/vector-child-reading-book-silhouette-vector-illustration_659631-3581.jpg'"
+            alt="Book Image"
+            class="book-image-preview mt-3">
+          <input type="file" class="form-control-file" id="bookImage" accept="image/*"
+                 (change)="onFileSelected($event)">
+        </div>
+      </div>
+      <div class="col-md-6">
+        <form class="row">
+          <div class="form-group mb-3">
+            <input type="text" placeholder="Book title*" class="form-control" id="bookName"
+                   [(ngModel)]="bookRequest.title"
+                   name="bookName" required>
+          </div>
+          <div class="form-group mb-3">
+            <input type="text" placeholder="Author name*" class="form-control" id="authorName"
+                   [(ngModel)]="bookRequest.authorName" name="authorName"
+                   required>
+          </div>
+          <div class="form-group mb-3">
+            <input type="text" placeholder="Isbn*" class="form-control" id="isbn" [(ngModel)]="bookRequest.isbn"
+                   name="isbn" required>
+          </div>
+
+          <div class="form-group mb-3">
+            <textarea class="form-control" placeholder="Synopsis*" id="synopsis" [(ngModel)]="bookRequest.synopsis"
+                      name="synopsis" rows="3"
+                      required></textarea>
+          </div>
+          <div class="form-group mb-3">
+            <input type="checkbox" class="form-check-input" id="shareable" [(ngModel)]="bookRequest.shareable"
+                   name="shareable" required>
+            <label for="shareable" class="form-check-label"> Share me</label>
+          </div>
+
+          <div class="d-flex justify-content-between">
+            <button (click)="saveBook()" type="submit" class="btn btn-outline-primary btn-sm">
+              <i class="fas fa-save"></i>&nbsp;Save
+            </button>
+            <button
+              routerLink="/books/my-books"
+              type="button" class="btn btn-outline-danger btn-sm ">
+              <i class="fas fa-times"></i>&nbsp;Cancel
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

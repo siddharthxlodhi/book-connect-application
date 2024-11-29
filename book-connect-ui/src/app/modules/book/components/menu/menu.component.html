@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand text-white" href="javascript:void(0)">BC!</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-white" aria-current="page" routerLink="books">
+            <i class="fas fa-home-alt"></i>&nbsp;Home
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="my-books">
+            <i class="fas fa-book"></i>&nbsp;My books
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="my-waiting-list">
+            <i class="fas fa-heart"></i>&nbsp;My waiting list
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="my-returned-books">
+            <i class="fa-solid fa-truck-fast"></i>&nbsp;My returned books
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" routerLink="my-borrowed-books">
+            <i class="fas fa-list-check"></i>&nbsp;Borrowed books
+          </a>
+        </li>
+      </ul>
+
+      <button (click)="googleBook()" type="button" class="btn btn-outline-light btn-sm">Google-Books</button>
+
+      <form class="d-flex gap-2 align-items-center ms-3" role="search">
+        <input class="form-control" type="search" placeholder="Find a book" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i></button>
+        <span>Welcome</span>
+        <span class="text-capitalize fw-bolder ">{{ loggedUser }}</span>
+
+        <!-- Notifications -->
+        <a class="me-3 dropdown-toggle hidden-arrow"  (click)="unreadNotificationsCount = 0" href="#" id="navbarDropdownMenuLink"
+           role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fas fa-bell "></i>
+          <span class="badge rounded-pill badge-notification bg-danger">{{unreadNotificationsCount}}</span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
+          <li *ngFor="let notify of notifications, let i = index" class="border-bottom text-black">
+            <a class="dropdown-item" href="#"> {{notify.bookTitle}} : {{notify.message}}</a>
+          </li>
+        </ul>
+      </form>
+      <button class="btn btn-link" type="fw-mediumsubmit" (click)="logout()"><i class="fas fa-sign-out"></i></button>
+    </div>
+  </div>
+</nav>

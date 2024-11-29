@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+*
+{
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
+body
+{
+ background-color: #B8B9BD;
+  font-family: 'Roboto', sans-serif;
+}
+a
+{
+  text-decoration: none;
+}
+.product-card {
+  padding: 7px ;
+  width: 280px;
+  position: relative;
+  box-shadow: 0 4px 9px #9b9b9b;
+  margin: 15px auto;
+  background: rgba(255, 255, 255, 0.93);
+  border: round(2);
+}
+.product-card {
+  height:auto; /* Adjust the height as needed */
+  overflow: hidden; /* Hide overflow content */
+}
+.badge {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  text-transform: uppercase;
+  font-size: 13px;
+  font-weight: 700;
+  background: #163072;
+  color: #fff;
+  padding: 3px 10px;
+}
+
+.product-tumb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 270px;
+  padding: 22px;
+  background: #ffffff;
+}
+
+.product-tumb img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.product-details {
+  height: 20%;
+  padding: 12px;
+}
+
+.product-catagory {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #4f4f4f;
+  margin-bottom: 16px;
+}
+
+
+
+
+
+.product-bottom-details {
+  overflow: hidden;
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+.product-bottom-details-next {
+  overflow: hidden;
+  padding-top: 15px;
+  margin-bottom: 0;
+}
+
+.product-bottom-details div {
+  width: 50%;
+  height: 5%;
+}
+.product-bottom-details-next div {
+  float: left;
+  width: 50%;
+  height: 5%;
+}
+.product-price {
+  font-size: 18px;
+  color: #3a8500;
+  font-weight: 600;
+align-content: flex-start;
+}
+.product-sale {
+  font-size: 15px;
+  color: #ff0000;
+  font-weight: 600;
+  align-content: flex-start;
+}
+.product-price small {
+  font-size: 80%;
+  font-weight: 400;
+  text-decoration: line-through;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+/* Common styles for product links */
+.product-links {
+  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product-links a {
+  display: inline-block;
+  margin-left: 5px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Specific styles for preview link */
+.preview-link {
+  color: #163072;
+}
+
+.preview-link:hover {
+  color: #218dce;
+}
+
+/* Specific styles for buy link */
+.buy-link {
+  color: #7a91a2;
+}
+
+.buy-link:hover {
+  color: #a8a5a5; /* Different color for hover effect */
+}
+
+.product-image {
+  width: 230px; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+}
+.card-heading {
+  font-size: 15px;
+  font-weight: bold;
+  padding: 8px 13px;
+}
+
+.card-text {
+  padding: 10px 15px;
+  font-size: 14px;
+  color: #636262;
+}
+
+.product-links .fw-bolder {
+  margin-right: auto; /* Push the rating to the left */
+  margin-left: auto; /* Push the rating to the right */
+}
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.page-item .page-link {
+  color: #007bff;
+}
+
+.page-item .page-link:hover {
+  color: #0056b3;
+}
+.margin-bottom-large {
+  margin-bottom: 0.2rem; /* Adjust the value as needed */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+.preview-link[disabled] {
+  pointer-events: none;
+  color: gray;
+}
+
+.gBook {
+  width: 50%; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+  filter: saturate(1.5) contrast(1.2) ;
+}
+.gBook1{
+  width: 18%;
+}
+/* From Uiverse.io by SteveBloX */
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+}
+
+.ball {
+  --size: 16px;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 11px;
+  margin: 0 10px;
+
+  animation: 2s bounce ease infinite;
+}
+
+.blue {
+  background-color: #4285f5;
+}
+
+.red {
+  background-color: #ea4436;
+  animation-delay: 0.25s;
+}
+
+.yellow {
+  background-color: #fbbd06;
+  animation-delay: 0.5s;
+}
+
+.green {
+  background-color: #34a952;
+  animation-delay: 0.75s;
+}
+
+@keyframes bounce {
+  50% {
+    transform: translateY(25px);
+  }
+}

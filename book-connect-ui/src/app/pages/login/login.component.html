@@ -1,0 +1,26 @@
+<div class="wrapper">
+  <div class="logo">
+    <img src="https://png.pngtree.com/template/20190316/ourmid/pngtree-books-logo-image_79143.jpg" alt="">
+
+  </div>
+  <div class="text-center mt-4 name">
+    Book-Connect
+  </div>
+  <form class="p-3 mt-3">
+    <div class="form-field d-flex align-items-center">
+      <span class="far fa-user"></span>
+      <input [(ngModel)]="authRequest.email" type="email" name="email" id="email" placeholder="email">
+    </div>
+    <div class="form-field d-flex align-items-center">
+      <span class="fas fa-key"></span>
+      <input [(ngModel)]="authRequest.password" type="password" name="password" id="pwd" placeholder="Password">
+    </div>
+    <button class="btn mt-3" (click)="login()">Login</button>
+  </form>
+  <div class="text-center fs-6">
+    <a href="#">Forget password?</a> or <a (click)="register()" type="button"  >Sign up</a>
+  </div>
+  <div *ngIf="errorMsg.length" class="alert alert-danger" role="alert">
+    <p *ngFor="let msg of errorMsg">->{{ msg }}</p>
+  </div>
+</div>

@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@500&display=swap');
+body{
+  background: #ffffff;
+  font-family: 'Hind Siliguri', sans-serif;
+}
+.card{
+  width: 315px;
+  border: none;
+  border-radius: 20px;
+}
+.adiv{
+  background: #163072;
+  border-radius: 10px 10px 0 0;
+  font-size: 15px;
+  height: 38px;
+}
+img{
+  margin-right: 10px;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+}
+.fas{
+  cursor: pointer;
+}
+.fa-chevron-left{
+  color: #fff;
+}
+h6{
+  font-size: 12px;
+  font-weight: bold;
+}
+small{
+  font-size: 10px;
+  color: #898989;
+}
+.form-control{
+  border: none;
+  background: #F6F7FB;
+  font-size: 12px;
+}
+.form-control:focus{
+  box-shadow: none;
+  background: #F6F7FB;
+}
+.form-control::placeholder{
+  font-size: 12px;
+  color: #B8B9BD;
+}
+.btn-primary{
+  background: #03A9F4;
+  padding: 4px 0 7px;
+  border: none;
+}
+.btn-primary:focus{
+  box-shadow: none;
+}
+.btn-primary span{
+  font-size: 12px;
+  color: #A6DCFF;
+}
+p.mt-3{
+  font-size: 13px;
+  color: #B8B9BD;
+  cursor: pointer;
+}
+
+.card {
+  border: 0.5px solid #163072;
+}
+.book-info {
+  margin-top: 20px;
+}
+.book-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  border-bottom: #495057 1px;
+}
+.book-author {
+  font-size: 15px;
+  color: #555;
+}
+.shadow-card {
+  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.hover-color {
+  color: initial; /* Set the initial color */
+  transition: color 0.3s ease; /* Smooth transition */
+}
+
+.hover-color:hover {
+  color: #000000; /* Change to your desired color */
+}

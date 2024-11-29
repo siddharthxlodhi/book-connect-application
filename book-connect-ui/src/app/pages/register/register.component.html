@@ -1,0 +1,41 @@
+<div class="container register">
+  <div class="row">
+    <div class="col-md-3 register-left">
+<!--      <img src="IMG_20231002_112102-removebg.png" alt=""/>-->
+      <h3>Welcome</h3>
+      <p>Register to Book-Connect</p>
+      <button (click)="login()" class="btn mt-3">Login</button>
+    </div>
+    <div class="col-md-9 register-right">
+      <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
+
+      </ul>
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div *ngIf="errorMsg.length" class="alert alert-danger small-alert" role="alert">
+            <p *ngFor="let msg of errorMsg">->{{ msg }}</p>
+          </div>
+
+          <h3 class="register-heading">USER DETAILS</h3>
+          <div class="row register-form">
+            <div class="col-md-6">
+              <div class="form-group">
+                <input  [(ngModel)]="regRequest.firstName" type="text" name="firstname" class="form-control" placeholder="First name*" value="" />
+              </div>
+              <div class="form-group">
+                <input [(ngModel)]="regRequest.lastName" type="text" name="lastname" class="form-control" placeholder="Last name*" value="" />
+              </div>
+              <div class="form-group">
+                <input [(ngModel)]="regRequest.email" type="email" name="email" class="form-control" placeholder="email*" value="" />
+              </div>
+              <div class="form-group">
+                <input [(ngModel)]="regRequest.password" type="password" name="password" class="form-control" placeholder="password*" value="" />
+              </div>
+              <button class="btn mt-3" (click)="registerUser()">Register</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

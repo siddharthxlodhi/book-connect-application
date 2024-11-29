@@ -1,0 +1,49 @@
+<div class="d-flex justify-content-end mb-3">
+  <a routerLink="/books/manage" class="btn btn-outline-primary small-button">
+    <i class="fas fa-plus"></i>&nbsp;New book
+  </a>
+</div>
+<div class="d-flex justify-content-start gap-2 flex-wrap ">
+  <app-book-card
+    [Book]="book" *ngFor="let book of pageBookResponse.content"
+    [manage]="true"
+    (edit)="editBook($event)"
+    (share)="shareBook($event)"
+    (archiveThis)="archiveBook($event)"
+  ></app-book-card>
+</div>
+<div class="d-flex justify-content-center mt-3">
+  <nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center pagination-sm ">
+      <li class="page-item">
+        <a (click)="goToFirst()" [class.disabled]="pageNo==0" class="page-link" href="javascript:void (0)"
+           aria-label="First">
+          <i class="fa-solid fa-angle-double-left"></i>
+        </a>
+      </li>
+      <li class="page-item">
+        <a (click)="goToPrevious()" [class.disabled]="pageNo==0" class="page-link" href="javascript:void (0)"
+           aria-label="Previous">
+          <i class="fa-solid fa-angle-left"></i>
+        </a>
+      </li>
+      <li
+        [class.active]="pageNo==pageIndex"
+        *ngFor="let _ of [].constructor(this.pageBookResponse.totalPages);let pageIndex=index"
+        (click)="goToPage(pageIndex)" class="page-item"><a class="page-link"
+                                                           href="javascript:void (0)">{{ pageIndex + 1 }}</a></li>
+      <li class="page-item">
+        <a (click)="goToNext()" [class.disabled]="isLastPage" class="page-link" href="javascript:void (0)"
+           aria-label="Next">
+          <i class="fa-solid fa-angle-right"></i>
+        </a>
+      </li>
+      <li class="page-item">
+        <a (click)="goToLast()" [class.disabled]="isLastPage" class="page-link" href="javascript:void (0)"
+           aria-label="Last">
+          <i class="fa-solid fa-angle-double-right"></i>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>

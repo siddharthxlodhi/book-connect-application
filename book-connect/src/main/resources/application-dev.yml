@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: JwtSecurity
+  datasource:
+    url: jdbc:postgresql://localhost:5432/jwt_security
+    password: pass
+    username: user
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    database: postgresql
+    properties:
+      hibernate:
+        format_sql: true
+
+  mail:
+    host: localhost
+    port: 1025
+    username: ali
+    password: ali
+    properties:
+      mail:
+        smtp:
+          trust: "*"
+        auth: true
+        starttls:
+          enabled: true
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+
+
+application:
+  security:
+    jwt:
+      secret-key: f61ab23e04e7ae9a1a5362e50d6a460b21c1a299f12b5ad2acb223d9533b0410364fb94084f0a68ffb659a9b732ff341e8b212a6bd22c2a67fe30735a1d56bbd
+      expiration: 86400000  # one day
+  mailing:
+    activation-url: http://localhost:4200/activate-account
+  file:
+    uploads:
+      photos-output-path: ./uploads
+  google:
+    Book:
+      Key: ${BOOK_API_KEY}
+
+

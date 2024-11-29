@@ -1,0 +1,128 @@
+.register{
+  background: -webkit-linear-gradient(45deg, #1293ef, #229fa4);
+  margin-top: 3%;
+  padding: 2%;
+  border-radius: 10px;
+}
+.register-left{
+  text-align: center;
+  color: #fff;
+  margin-top: 4%;
+}
+.register-left input{
+  border: none;
+  border-radius: 1.5rem;
+  padding: 2%;
+  width: 90%;
+  background: #f8f9fa;
+  font-weight: bold;
+  color: #383d41;
+  margin-top: 30%;
+  margin-bottom: 3%;
+  cursor: pointer;
+}
+.register-right{
+  background: #f8f9fa;
+  border-top-left-radius: 10% 50%;
+  border-bottom-left-radius: 10% 50%;
+}
+.register-left img{
+  margin-top: 15%;
+  margin-bottom: 5%;
+  width: 25%;
+  -webkit-animation: mover 2s infinite  alternate;
+  animation: mover 1s infinite  alternate;
+}
+
+.register-left p{
+  font-weight: lighter;
+  padding: 12%;
+  margin-top: -8%;
+}
+.register .register-form{
+  align-self: center;
+  padding: 8%;
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+}
+.btnRegister{
+  float: right;
+  margin-top: 10%;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 2%;
+  background: #0062cc;
+  color: #fff;
+  font-weight: 600;
+  width: 50%;
+  cursor: pointer;
+}
+.register .nav-tabs{
+  margin-top: 3%;
+  border: none;
+  background: #0062cc;
+  border-radius: 1.5rem;
+  width: 28%;
+  float: right;
+}
+.register .nav-tabs .nav-link{
+  padding: 2%;
+  height: 34px;
+  font-weight: 600;
+  color: #fff;
+  border-top-right-radius: 1.5rem;
+  border-bottom-right-radius: 1.5rem;
+}
+.register .nav-tabs .nav-link:hover{
+  border: none;
+}
+.register .nav-tabs .nav-link.active{
+  width: 1000px;
+  color: #0062cc;
+  border: 2px solid #0062cc;
+  border-top-left-radius: 1.5rem;
+  border-bottom-left-radius: 1.5rem;
+}
+.register-heading{
+  text-align: center;
+  margin-top: 8%;
+  margin-bottom: -15%;
+  color: #495057;
+}
+//button {
+
+.btn {
+  box-shadow: none;
+  width: 50%;
+  height: 40px;
+  background-color: #03A9F4;
+  color: #fff;
+  border-radius: 25px;
+  box-shadow: 3px 3px 3px #a8a5a5,
+  -3px -3px 3px #fff;
+  letter-spacing: 1.3px;
+
+}
+
+.btn:hover {
+  background-color: #039BE5;
+}
+
+.col-md-6 {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center-aligns the form controls horizontally */
+  gap: 15px; /* Adjust the gap value as needed */
+}
+
+
+.small-alert {
+  margin-top: 10px;
+  margin-left: 15px;
+  font-size: 18px; /* Adjust the size as needed */
+  padding: 5px; /* Adjust the padding as needed */
+}
+.form-group{
+  width: 90%;
+}

@@ -1,0 +1,47 @@
+<div id="Mycard" *ngIf="submitted else codeForm">
+  <div id="card" *ngIf="isOkay; else activationError" >
+    <div id="upper-side" >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.5 18l-5-5 1.414-1.414L10.5 15.172l7.086-7.086L19 9.5l-8.5 8.5z"/></svg>
+      <h3 id="status">Success</h3>
+    </div>
+    <div id="lower-side">
+      <p id="message">{{ message }}</p>
+      <button class="btn mt-3" (click)="redirectToLogin()">Login</button>
+    </div>
+  </div>
+  <ng-template #activationError>
+    <div id="MyFailureCard">
+      <div id="failure-card">
+        <div id="failure-upper-side">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/></svg>
+          <h3 id="failure-status">Activation Failed</h3>
+        </div>
+        <div id="failure-lower-side">
+          <p id="failure-message">Unfortunately, your account could not be activated.</p>
+          <div id="failure-reasons">
+            <p>{{message}}</p>
+          </div>
+          <a href="#" id="failure-contBtn" (click)="submitted=false">Try Again</a>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+
+
+
+<ng-template #codeForm>
+  <div class="d-flex justify-content-center align-items-center container">
+    <div class="card py-5 px-3">
+      <h5 class="m-0">Activate Account</h5>
+      <span class="mobile-text">Enter the code we just send on your email</span>
+      <code-input [isCodeHidden]="false"
+                  [codeLength]="6"
+                  [code]="'number'"
+                  (codeCompleted)="onCodeCompleted($event)">
+      </code-input>
+      <div class="text-center mt-5"><span class="d-block mobile-text">Don't receive the code?</span><span class="font-weight-bold text-danger cursor">Resend</span></div>
+    </div>
+  </div>
+</ng-template>
