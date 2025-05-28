@@ -11,5 +11,7 @@ springdoc:
 
 
 server:
+  address: 0.0.0.0  # <-- ADD THIS LINE
+  port: 8080        # <-- OPTIONAL, but good to include explicitly
   servlet:
-    context-path: /api/v1/
+    context-path: /api/v1//v1/
