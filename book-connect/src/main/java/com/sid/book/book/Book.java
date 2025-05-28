@@ -4,7 +4,6 @@ import com.sid.book.common.BaseEntity;
 import com.sid.book.feedback.Feedback;
 import com.sid.book.history.BookTransactionHistory;
 import com.sid.book.user.User;
-import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

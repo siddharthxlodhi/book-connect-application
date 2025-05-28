@@ -3,6 +3,7 @@ package com.sid.book.email;
 import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -15,6 +16,7 @@ import java.util.Map;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
+@Slf4j
 @RequiredArgsConstructor
 @Service
 public class EmailService {
@@ -50,13 +52,14 @@ public class EmailService {
         Context context = new Context();
         context.setVariables(properties);
 
-        messageHelpers.setFrom("siddharthxlodhi@gmail.com");
+        messageHelpers.setFrom("sidxcoding12@gmail.com");
         messageHelpers.setTo(to);
         messageHelpers.setSubject(subject);
 
         String template = templateEngine.process(templateName, context);
         messageHelpers.setText(template, true);
-        javaMailSender.send(mimeMessage);
 
+        javaMailSender.send(mimeMessage);
+        log.info("Sended mail to :{}", to);
     }
 }

@@ -15,12 +15,11 @@ a {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.card-image img {
-  align-self: center;
-  max-height: 60%;
-  max-width: 100%;
-
-  border-radius: 8px 8px 0 0;
+.book-cover {
+  width: 100%;
+  height: auto;
+  max-width: 250px; /* Adjust as needed */
+  max-height: 330px; /* Adjust as needed */
 }
 
 .card-action {
@@ -131,7 +130,7 @@ a {
 
 
 .cardcontainer{
-  width: 350px;
+  width: 360px;
   height: 500px;
   background-color: white;
   margin-left: auto;
