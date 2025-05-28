@@ -44,7 +44,7 @@ export class BookCardComponent {
     if (this._book.cover) {
       return 'data:image/jpg;base64,' + this._book.cover
     }
-    return "https://1.bp.blogspot.com/-HRRu6dw6FTI/UiGGOYfeeII/AAAAAAAAAV4/aLFjY4lAAXkpQzVzVrmi0Nicu-kNwqeKwCPcB/s1600/german.jpg";
+    return "https://viobqsdmsmszszqbioqc.supabase.co/storage/v1/object/public/uploads/1748460201590-german.jpg";
   }
 
 

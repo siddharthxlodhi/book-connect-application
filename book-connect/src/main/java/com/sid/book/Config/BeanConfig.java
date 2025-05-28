@@ -2,6 +2,7 @@ package com.sid.book.Config;
 
 import com.sid.book.user.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
@@ -26,6 +27,9 @@ import static org.springframework.http.HttpHeaders.*;
 @Configuration
 @RequiredArgsConstructor
 public class BeanConfig {
+
+    @Value("${allowed.origins}")
+    private  String  alloweOrigins;
 
     private final UserRepository userRepository;
 
@@ -67,7 +71,7 @@ public class BeanConfig {
         final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         final CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(Collections.singletonList("http://localhost:4200"));
+        config.setAllowedOrigins(Collections.singletonList(alloweOrigins));
         config.setAllowedHeaders(Arrays.asList(
                 ORIGIN, CONTENT_TYPE, ACCEPT, AUTHORIZATION
         ));

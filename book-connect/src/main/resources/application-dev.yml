@@ -44,8 +44,12 @@ application:
     Book:
       Key: ${BOOK_API_KEY}
 
+allowed:
+  origins: ${ALLOWED_ORIGINS}
 
 supabase:
   url: ${SUPABASE_URL}
   Api-key: ${SUPABASE_API_KEY}
   bucket: ${SUPABASE_BUCKET}
+
+

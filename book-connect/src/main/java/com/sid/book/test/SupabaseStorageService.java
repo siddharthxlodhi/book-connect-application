@@ -29,19 +29,23 @@ public class SupabaseStorageService {
                 .build();
     }
 
-    public Mono<String> uploadFile(MultipartFile file) throws IOException {
+    public Mono<String> uploadFile(MultipartFile file) {
         String fileName = System.currentTimeMillis() + "-" + Objects.requireNonNull(file.getOriginalFilename());
 
         // ✅ Correct upload path with upsert=true
         String uploadPath = "/storage/v1/object/" + bucket + "/" + fileName + "?upsert=true";
 
-        return getClient().put()
-                .uri(uploadPath)
-                .contentType(MediaType.parseMediaType(Objects.requireNonNull(file.getContentType())))
-                .bodyValue(file.getBytes())
-                .retrieve()
-                .toBodilessEntity()
-                .map(response -> supabaseUrl + "/storage/v1/object/public/" + bucket + "/" + fileName);
+        try {
+            return getClient().put()
+                    .uri(uploadPath)
+                    .contentType(MediaType.parseMediaType(Objects.requireNonNull(file.getContentType())))
+                    .bodyValue(file.getBytes())
+                    .retrieve()
+                    .toBodilessEntity()
+                    .map(response -> supabaseUrl + "/storage/v1/object/public/" + bucket + "/" + fileName);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 

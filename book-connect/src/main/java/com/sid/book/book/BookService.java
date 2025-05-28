@@ -1,4 +1,5 @@
 package com.sid.book.book;
+
 import com.sid.book.common.PageResponse;
 import com.sid.book.customExceptions.OperationNotPermittedException;
 import com.sid.book.file.FileStorageService;
@@ -7,6 +8,7 @@ import com.sid.book.history.BookTransactionHistoryRepo;
 import com.sid.book.notification.Notification;
 import com.sid.book.notification.NotificationService;
 import com.sid.book.notification.NotificationStatus;
+import com.sid.book.test.SupabaseStorageService;
 import com.sid.book.user.User;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.RequiredArgsConstructor;
@@ -33,6 +35,7 @@ public class BookService {
     private final BookMapper mapper;
     private final NotificationService notificationService;
     private final FileStorageService fileStorageService;
+    private final SupabaseStorageService storageService;
 
 
     public Integer saveBook(BookRequest bookRequest, Authentication authentication) {
@@ -206,8 +209,10 @@ public class BookService {
         Book book = bookRepository.findById(bookId)
                 .orElseThrow(() -> new EntityNotFoundException("No book found with ID:: " + bookId));
 
-        var profilePicture = fileStorageService.saveFile(file, connectedUser.getName());
-        book.setBookCover(profilePicture);
+//        var profilePicture = fileStorageService.saveFile(file, connectedUser.getName());
+//        book.setBookCover(profilePicture);
+        String imageUrl = storageService.uploadFile(file).block();
+        book.setBookCover(imageUrl);
         bookRepository.save(book);
     }
 }
