@@ -2,9 +2,9 @@ spring:
   application:
     name: JwtSecurity
   datasource:
-    url: jdbc:postgresql://localhost:5432/jwt_security
-    password: pass
-    username: user
+    url: ${SPRING_DATASOURCE_URL}
+    password: ${SPRING_DATASOURCE_USERNAME}
+    username: ${SPRING_DATASOURCE_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: update
@@ -15,29 +15,28 @@ spring:
         format_sql: true
 
   mail:
-    host: localhost
-    port: 1025
-    username: ali
-    password: ali
+    host: smtp.gmail.com
+    port: 587
+    username: ${SPRING_MAIL_USERNAME}
+    password: ${SPRING_MAIL_PASSWORD}  # 16-char app password (no spaces)
     properties:
       mail:
         smtp:
-          trust: "*"
-        auth: true
-        starttls:
-          enabled: true
-        connectiontimeout: 5000
-        timeout: 3000
-        writetimeout: 5000
+          auth: true
+          starttls:
+            enable: true
+          connectiontimeout: 5000
+          timeout: 3000
+          writetimeout: 5000
 
 
 application:
   security:
     jwt:
-      secret-key: f61ab23e04e7ae9a1a5362e50d6a460b21c1a299f12b5ad2acb223d9533b0410364fb94084f0a68ffb659a9b732ff341e8b212a6bd22c2a67fe30735a1d56bbd
+      secret-key: ${JWT_SECRET_KEY}
       expiration: 86400000  # one day
   mailing:
-    activation-url: http://localhost:4200/activate-account
+    activation-url: ${ACTIVATION_URL}
   file:
     uploads:
       photos-output-path: ./uploads
