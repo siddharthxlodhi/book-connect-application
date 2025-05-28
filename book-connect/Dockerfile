@@ -18,7 +18,7 @@ FROM amazoncorretto:17
 WORKDIR /app
 
 # Copy the built JAR file from the build stage
-COPY --from=build /build/target/book-connect-1.0.0-SNAPSHOT.jar app.jar
+COPY --from=build /build/target/book-connect-1.0.0.jar app.jar
 
 # Set environment variable to activate the correct Spring profile
 ARG PROFILE=dev
