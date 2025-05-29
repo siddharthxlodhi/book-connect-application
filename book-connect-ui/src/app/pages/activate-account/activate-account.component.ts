@@ -27,30 +27,21 @@ export class ActivateAccountComponent {
   submitted = false;
   isLoading = false;
 
-  private confirmAccount(activationToken: string) {
+  confirmAccount(token: string) {
     this.isLoading = true;
-    this.authService.activate({ activationToken }).subscribe({
-      next: (response: any) => {
+
+    this.authService.activate({ activationToken: token }).subscribe({
+      next: (response: string) => {
         this.isLoading = false;
-        // Handle both string and object responses
-        if (typeof response === 'string' && response.includes('Activated')) {
-          this.isOkay = true;
-          this.message = 'Your account has been successfully activated.\nNow you can proceed to login';
-        } else if (response?.status === 'success') {
-          this.isOkay = true;
-          this.message = response.message || 'Account activated successfully';
-        } else {
-          this.isOkay = false;
-          this.message = 'Activation successful but unexpected response';
-        }
+        this.isOkay = true;
+        this.message = response; // Will show "Account activated successfully"
+        this.toastr.success(this.message);
+        setTimeout(() => this.router.navigate(['/login']), 2000);
       },
       error: (err) => {
         this.isLoading = false;
         this.isOkay = false;
-        this.message = err.error?.error ||
-          err.error?.message ||
-          err.message ||
-          'Activation failed. Please try again.';
+        this.message = err.error || 'Activation failed';
         this.toastr.error(this.message);
       }
     });

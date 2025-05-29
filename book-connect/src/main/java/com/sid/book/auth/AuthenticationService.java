@@ -79,7 +79,7 @@ public class AuthenticationService {
         token.setValidatedAt(LocalDateTime.now());
         tokenRepository.save(token);
         log.info("Account activated:{}", user.getId());
-        return new ResponseEntity<>("Activated", HttpStatus.ACCEPTED);
+        return new ResponseEntity<>("Account activated successfully", HttpStatus.OK);
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest) {
