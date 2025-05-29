@@ -62,12 +62,8 @@
                   "name": "styles",
                   "maximumWarning": "500kb",
                   "maximumError": "1mb"
-                },
-                {
-                  "type": "css-inline-fonts",
-                  "maximumWarning": "10kb",
-                  "maximumError": "20kb"
                 }
+
               ],
               "outputHashing": "all"
             },
