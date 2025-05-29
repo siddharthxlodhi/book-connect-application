@@ -23,7 +23,7 @@ export class ActivateAccountComponent {
   }
 
   message = '';
-  isOkay = true;
+  isOkay = false;
   submitted = false;
 
   private confirmAccount(activationToken: string) {

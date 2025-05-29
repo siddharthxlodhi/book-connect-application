@@ -14,7 +14,7 @@ body {
 }
 
 .wrapper {
-  max-width: 350px;
+  max-width: 400px;  /* increased width */
   min-height: 500px;
   margin: 80px auto;
   padding: 40px 30px 30px 30px;
@@ -47,29 +47,61 @@ body {
   color: #555;
 }
 
-.wrapper .form-field input {
+.form-field {
+  margin-bottom: 20px;
+}
+
+/* Position relative to hold the icon inside */
+.form-field.position-relative {
+  position: relative;
+}
+
+/* Input styles */
+.form-field input {
   width: 100%;
   display: block;
-  border: none;
+  border: 1px solid #ccc;
+  border-radius: 1.5rem;
+  padding: 10px 15px;
+  font-size: 1rem;
+  color: #495057;
+  background-color: #f8f9fa;
   outline: none;
-  background: none;
-  font-size: 1.2rem;
-  color: #666;
-  padding: 10px 15px 10px 10px;
-  /* border: 1px solid red; */
+  transition: border-color 0.3s ease;
+  /* Add padding-right for the icon only on password input */
 }
 
-.wrapper .form-field {
-  padding-left: 10px;
-  margin-bottom: 20px;
-  border-radius: 20px;
-  box-shadow: inset 8px 8px 8px #cbced1, inset -8px -8px 8px #fff;
+.form-field.position-relative input#pwd {
+  padding-right: 40px; /* Space for the eye icon */
 }
 
-.wrapper .form-field .fas {
+//.form-field input:focus {
+//  border-color: #03A9F4;
+//  background-color: #fff;
+//}
+
+/* Autofill fix */
+.form-field input:-webkit-autofill,
+.form-field input:-webkit-autofill:hover,
+.form-field input:-webkit-autofill:focus,
+.form-field input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px #f8f9fa inset !important;
+  -webkit-text-fill-color: #495057 !important;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Eye icon */
+.toggle-password-icon {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
   color: #555;
+  font-size: 18px;
 }
 
+/* Button */
 .wrapper .btn {
   box-shadow: none;
   width: 100%;
@@ -102,13 +134,14 @@ body {
     padding: 40px 15px 15px 15px;
   }
 }
+
 .alert {
-font-size: 15px;
+  font-size: 15px;
   padding: 20px;
   margin-bottom: 25px;
   border: 1px solid transparent;
-  border-radius: 50px; /* Makes the box oval-shaped */
-  text-align: center; /* Centers the text */
+  border-radius: 50px;
+  text-align: center;
 }
 
 .alert-danger {

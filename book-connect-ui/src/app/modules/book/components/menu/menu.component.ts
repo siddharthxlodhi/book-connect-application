@@ -43,7 +43,7 @@ export class MenuComponent implements OnInit {
     this.getLoggedUser();
     this.navigationHandler();
     if (this.tokenService.TokenSub) {
-      let ws = new SockJS('http://localhost:8080/api/v1/ws');
+      let ws = new SockJS('https://book-connect-application.onrender.com/api/v1/ws');
       this.socketClient = Stomp.over(() => ws);
       this.socketClient.connect({'Authorization:': 'Bearer ' + this.tokenService.token}, () => {
         this.notificationSubscription = this.socketClient.subscribe(

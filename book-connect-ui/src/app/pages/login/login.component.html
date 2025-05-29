@@ -1,26 +1,40 @@
 <div class="wrapper">
   <div class="logo">
     <img src="https://png.pngtree.com/template/20190316/ourmid/pngtree-books-logo-image_79143.jpg" alt="">
-
   </div>
+
   <div class="text-center mt-4 name">
     Book-Connect
   </div>
-  <form class="p-3 mt-3">
-    <div class="form-field d-flex align-items-center">
-      <span class="far fa-user"></span>
-      <input [(ngModel)]="authRequest.email" type="email" name="email" id="email" placeholder="email">
+
+  <form class="p-3 mt-3" (submit)="$event.preventDefault(); login()">
+    <div class="form-field position-relative">
+      <input [(ngModel)]="authRequest.email" type="email" name="email" id="email" placeholder="Email" />
     </div>
-    <div class="form-field d-flex align-items-center">
-      <span class="fas fa-key"></span>
-      <input [(ngModel)]="authRequest.password" type="password" name="password" id="pwd" placeholder="Password">
+
+    <div class="form-field position-relative">
+      <input [(ngModel)]="authRequest.password"
+             [type]="showPassword ? 'text' : 'password'"
+             name="password"
+             id="pwd"
+             placeholder="Password" />
+      <i class="fas toggle-password-icon"
+         [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"
+         (click)="showPassword = !showPassword"></i>
     </div>
-    <button class="btn mt-3" (click)="login()">Login</button>
+
+    <button class="btn mt-3" type="submit">Login</button>
   </form>
+
   <div class="text-center fs-6">
-    <a href="#">Forget password?</a> or <a (click)="register()" type="button"  >Sign up</a>
+    <a href="#">Forget password?</a> or
+    <a (click)="register()" type="button">Sign up</a>
   </div>
+
   <div *ngIf="errorMsg.length" class="alert alert-danger" role="alert">
     <p *ngFor="let msg of errorMsg">->{{ msg }}</p>
   </div>
 </div>
+
+<!-- Make sure this is added once globally, e.g. in index.html -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />

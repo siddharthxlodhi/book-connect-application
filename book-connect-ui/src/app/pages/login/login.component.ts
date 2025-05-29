@@ -3,7 +3,7 @@ import {AuthenticationRequest} from "../../services/models/authentication-reques
 import {FormsModule} from "@angular/forms";
 import {Router, RouterLink} from "@angular/router";
 import {AuthenticationService} from "../../services/services/authentication.service";
-import {NgForOf, NgIf} from "@angular/common";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {TokenService} from "../../services/token/token.service";
 
 @Component({
@@ -13,7 +13,8 @@ import {TokenService} from "../../services/token/token.service";
     FormsModule,
     RouterLink,
     NgIf,
-    NgForOf
+    NgForOf,
+    NgClass
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -27,6 +28,7 @@ export class LoginComponent {
 
   authRequest: AuthenticationRequest = {email: '', password: ''};
   errorMsg: Array<string> = [];
+  showPassword: boolean = false;
 
 
   login() {
