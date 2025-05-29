@@ -13,6 +13,7 @@ import org.thymeleaf.spring6.SpringTemplateEngine;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.CompletableFuture;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 
@@ -23,43 +24,46 @@ public class EmailService {
     private final JavaMailSender javaMailSender;
     private final SpringTemplateEngine templateEngine;
 
-    @Async
-    public void sendEmail(
+    @Async("emailTaskExecutor")
+    public CompletableFuture<Void> sendEmail(
             String to,
             String username,
             EmailTemplateName emailTemplateName,
             String confirmationUrl,
             String subject,
-            String activation_code
-    ) throws MessagingException {
-        String templateName;
-        if (emailTemplateName == null) {
-            templateName = "confirm-email";
-        } else templateName = emailTemplateName.getName();
+            String activationCode
+    ) {
+        try {
+            String templateName = (emailTemplateName == null) ? "confirm-email" : emailTemplateName.getName();
 
-        MimeMessage mimeMessage = javaMailSender.createMimeMessage();
-        MimeMessageHelper messageHelpers = new MimeMessageHelper(
-                mimeMessage,
-                MimeMessageHelper.MULTIPART_MODE_MIXED,
-                UTF_8.name()
-        );
+            MimeMessage mimeMessage = javaMailSender.createMimeMessage();
+            MimeMessageHelper helper = new MimeMessageHelper(mimeMessage, MimeMessageHelper.MULTIPART_MODE_MIXED, UTF_8.name());
 
-        Map<String, Object> properties = new HashMap<>();
-        properties.put("username", username);
-        properties.put("confirmationUrl", confirmationUrl);
-        properties.put("activationCode", activation_code);
+            // Template context
+            Map<String, Object> properties = new HashMap<>();
+            properties.put("username", username);
+            properties.put("confirmationUrl", confirmationUrl);
+            properties.put("activationCode", activationCode);
 
-        Context context = new Context();
-        context.setVariables(properties);
+            Context context = new Context();
+            context.setVariables(properties);
 
-        messageHelpers.setFrom("sidxcoding12@gmail.com");
-        messageHelpers.setTo(to);
-        messageHelpers.setSubject(subject);
+            // Email headers
+            helper.setFrom("sidxcoding12@gmail.com");
+            helper.setTo(to);
+            helper.setSubject(subject);
 
-        String template = templateEngine.process(templateName, context);
-        messageHelpers.setText(template, true);
+            // Process template and send
+            String htmlContent = templateEngine.process(templateName, context);
+            helper.setText(htmlContent, true);
 
-        javaMailSender.send(mimeMessage);
-        log.info("Sended mail to :{}", to);
+            javaMailSender.send(mimeMessage);
+            log.info("Email successfully queued for: {}", to);
+            return CompletableFuture.completedFuture(null);
+
+        } catch (MessagingException e) {
+            log.error("Failed to send email to {}: {}", to, e.getMessage());
+            return CompletableFuture.failedFuture(e);
+        }
     }
 }

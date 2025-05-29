@@ -18,16 +18,24 @@ spring:
     host: smtp.gmail.com
     port: 587
     username: ${SPRING_MAIL_USERNAME}
-    password: ${SPRING_MAIL_PASSWORD}  # 16-char app password (no spaces)
+    password: ${SPRING_MAIL_PASSWORD}
+    protocol: smtp
     properties:
       mail:
         smtp:
           auth: true
           starttls:
             enable: true
-          connectiontimeout: 5000
-          timeout: 3000
+            required: true  # Force TLS
+          connectiontimeout: 5000  # 5 seconds
+          timeout: 5000
           writetimeout: 5000
+          ssl:
+            protocols: TLSv1.2  # Enforce modern TLS
+          quitwait: false  # Faster connection closure
+          dns:
+            trustall: true  # Skip reverse DNS lookup
+          sendpartial: true  # Send emails even if some recipients fail
 
 
 application:

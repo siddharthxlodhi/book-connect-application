@@ -11,6 +11,7 @@ import com.sid.book.user.User;
 import com.sid.book.user.UserRepository;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,7 @@ import static com.sid.book.email.EmailTemplateName.ACTIVATE_ACCOUNT;
 
 @RequiredArgsConstructor
 @Service
+@Slf4j
 public class AuthenticationService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
@@ -103,7 +105,10 @@ public class AuthenticationService {
                 activationUrl,
                 "Account Activation",
                 activationCode
-        );
+        ).exceptionally(ex -> {
+            log.error("Email delivery failed", ex);
+            return null;
+        });
 
 
     }
