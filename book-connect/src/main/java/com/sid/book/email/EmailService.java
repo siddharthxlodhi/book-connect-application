@@ -35,7 +35,7 @@ public class EmailService {
         String templateName;
         if (emailTemplateName == null) {
             templateName = "confirm-email";
-        } else templateName = emailTemplateName.name();
+        } else templateName = emailTemplateName.getName();
 
         MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper messageHelpers = new MimeMessageHelper(

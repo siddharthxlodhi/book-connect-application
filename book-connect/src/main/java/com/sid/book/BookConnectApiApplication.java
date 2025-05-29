@@ -25,9 +25,15 @@ public class BookConnectApiApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-//        Roles role=new Roles();
-//        role.setName("USER");
-//        role.setCreatedDate(LocalDateTime.now());
-//        roleRepository.save(role);
+
+        var userRole = roleRepository.findByName("USER");
+        if (userRole.isEmpty()) {
+            Roles role = new Roles();
+            role.setName("USER");
+            role.setCreatedDate(LocalDateTime.now());
+            roleRepository.save(role);
+        }
+
+
     }
 }
