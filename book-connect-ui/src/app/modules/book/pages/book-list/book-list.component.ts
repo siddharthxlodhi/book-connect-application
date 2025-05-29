@@ -32,7 +32,6 @@ export class BookListComponent implements OnInit {
   level = 'success';
 
   ngOnInit(): void {
-    console.log(this.token.token)
     this.getAllBooks()
 
   }

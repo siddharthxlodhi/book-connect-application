@@ -69,7 +69,6 @@ export class ManageBookComponent implements OnInit {
   }
 
   saveBook() {
-    console.log(this.selectedPicture);
     this.bookService.saveBook({
       body: this.bookRequest
     }).subscribe({
