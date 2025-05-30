@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { AuthenticationService } from "../../services/services/authentication.service";
-import { CodeInputModule } from "angular-code-input";
-import { Router } from "@angular/router";
-import { NgIf, CommonModule } from "@angular/common";
-import { ToastrService } from "ngx-toastr";
+import { AuthenticationService } from '../../services/services/authentication.service';
+import { CodeInputModule } from 'angular-code-input';
+import { Router } from '@angular/router';
+import { NgIf, CommonModule } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-activate-account',
@@ -14,7 +14,7 @@ import { ToastrService } from "ngx-toastr";
     CommonModule
   ],
   templateUrl: './activate-account.component.html',
-  styleUrls: ['./activate-account.component.scss'] // ✅ FIX: use styleUrls (with "s")
+  styleUrls: ['./activate-account.component.scss'] // Fixed typo to styleUrls
 })
 export class ActivateAccountComponent {
   message = '';
@@ -32,21 +32,41 @@ export class ActivateAccountComponent {
     this.isLoading = true;
 
     this.authService.activate({ activationToken: token }).subscribe({
-      next: (response: string) => {
+      next: (response: { [key: string]: string }) => {
         this.isLoading = false;
-        this.isOkay = true;
-        this.message = response || 'Account activated successfully';
-        this.toastr.success(this.message);
-        setTimeout(() => this.router.navigate(['/login']), 2000);
+
+        // Success response expected to have "message" key
+        if (response['message']) {
+          this.isOkay = true;
+          this.message = response['message'];
+          this.toastr.success(this.message);
+          setTimeout(() => this.router.navigate(['/login']), 2000);
+        } else {
+          // Unexpected success response shape
+          this.isOkay = false;
+          this.message = 'Unexpected response from server.';
+          this.toastr.error(this.message);
+        }
       },
       error: (err) => {
         this.isLoading = false;
         this.isOkay = false;
-        this.message = err?.error?.message || err?.error || 'Activation failed';
+
+        // Error handler: error response body has an "error" field
+        // err.error might be an object with error message or a string
+        if (err.error && typeof err.error === 'object' && 'error' in err.error) {
+          this.message = err.error['error'];
+        } else if (typeof err.error === 'string') {
+          this.message = err.error;
+        } else {
+          this.message = 'Activation failed due to unknown error.';
+        }
+
         this.toastr.error(this.message);
       }
     });
   }
+
 
   onCodeCompleted(token: string) {
     if (token.length === 6) {
@@ -63,5 +83,6 @@ export class ActivateAccountComponent {
     this.submitted = false;
     this.message = '';
     this.isOkay = false;
+    this.isLoading = false;
   }
 }

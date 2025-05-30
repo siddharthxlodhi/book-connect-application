@@ -6,6 +6,7 @@ import { NgModule, ModuleWithProviders, SkipSelf, Optional } from '@angular/core
 import { HttpClient } from '@angular/common/http';
 import { ApiConfiguration, ApiConfigurationParams } from './api-configuration';
 
+import { ImageUploadControllerService } from './services/image-upload-controller.service';
 import { FeedbackService } from './services/feedback.service';
 import { BookService } from './services/book.service';
 import { AuthenticationService } from './services/authentication.service';
@@ -20,6 +21,7 @@ import { GoogleBookService } from './services/google-book.service';
   exports: [],
   declarations: [],
   providers: [
+    ImageUploadControllerService,
     FeedbackService,
     BookService,
     AuthenticationService,
@@ -41,7 +43,7 @@ export class ApiModule {
     }
   }
 
-  constructor(
+  constructor( 
     @Optional() @SkipSelf() parentModule: ApiModule,
     @Optional() http: HttpClient
   ) {
