@@ -1,13 +1,13 @@
-
 <app-feedback
   *ngIf="selectedBook"
   [book]="selectedBook"
   (isSelected)="isSelected($event)"
 ></app-feedback>
-<div *ngIf="!this.selectedBook">
+
+<div *ngIf="!selectedBook" class="responsive-table-wrapper">
   <h4>My borrowed books</h4>
   <hr>
-  <table class="table align-middle mb-0 bg-white">
+  <table class="table align-middle mb-0 bg-white borrowed-books-table">
     <thead class="bg-light">
     <tr>
       <th>#</th>
@@ -21,34 +21,31 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let book of borrowedBooksPageResponse.content;let index=index">
-      <td>
-        <p class="fw-normal mb-1">{{ index + 1 }}</p>
-      </td>
-      <td>
-        <div class="d-flex  align-items-center">
+    <tr *ngFor="let book of borrowedBooksPageResponse.content; let index = index">
+      <td data-label="#"> {{ index + 1 }} </td>
+      <td data-label="Title">
+        <div class="d-flex align-items-center">
           <p class="fw-medium mb-1">{{ book.title }}</p>
         </div>
       </td>
-      <td>
-        <p class="fw-normal mb-1">{{ book.authorName }}</p>
-      </td>
-      <td>
-        <p class="fw-normal mb-1">{{ book.owner }}</p>
-      </td>
-      <td>
-        <p class="fw-normal mb-1"> {{ book.isbn }}</p>
-      </td>
-      <td>
+      <td data-label="Author"> {{ book.authorName }} </td>
+      <td data-label="Owner"> {{ book.owner }} </td>
+      <td data-label="ISBN"> {{ book.isbn }} </td>
+      <td data-label="Rate">
         <i class="fas fa-star text-warning"></i> {{ book.rate }}
       </td>
-      <td>
+      <td data-label="Return">
         <div class="d-flex gap-2 justify-content-lg-center">
           <i *ngIf="book.returned" class="fa-regular fa-paper-plane text-primary"></i>
-          <i *ngIf="!book.returned" (click)="returnBorrowedBook(book)" class="fa-solid fa-paper-plane text-success"></i>
+          <i
+            *ngIf="!book.returned"
+            (click)="returnBorrowedBook(book)"
+            class="fa-solid fa-paper-plane text-success"
+            style="cursor:pointer;"
+          ></i>
         </div>
       </td>
-      <td>
+      <td data-label="Return Approved">
         <div class="d-flex gap-2">
           <i class="fa-solid fa-circle-check" [class.text-success]="book.returnApproved"></i>
         </div>
@@ -56,35 +53,35 @@
     </tr>
     </tbody>
   </table>
+
   <div class="d-flex justify-content-center mt-3">
     <nav aria-label="Page navigation example" class="margin-bottom-large">
       <ul class="pagination justify-content-center pagination-sm">
         <li class="page-item">
-          <a (click)="goToFirst()" [class.disabled]="pageNo==0" class="page-link" href="javascript:void (0)"
-             aria-label="First">
+          <a (click)="goToFirst()" [class.disabled]="pageNo==0" class="page-link" href="javascript:void(0)" aria-label="First">
             <i class="fa-solid fa-angle-double-left"></i>
           </a>
         </li>
         <li class="page-item">
-          <a (click)="goToPrevious()" [class.disabled]="pageNo==0" class="page-link" href="javascript:void (0)"
-             aria-label="Previous">
+          <a (click)="goToPrevious()" [class.disabled]="pageNo==0" class="page-link" href="javascript:void(0)" aria-label="Previous">
             <i class="fa-solid fa-angle-left"></i>
           </a>
         </li>
-        <li [class.active]="pageNo==pageIndex"
-            *ngFor="let _ of [].constructor(this.borrowedBooksPageResponse.totalPages); let pageIndex=index"
-            (click)="goToPage(pageIndex)" class="page-item">
-          <a class="page-link" href="javascript:void (0)">{{ pageIndex + 1 }}</a>
+        <li
+          [class.active]="pageNo==pageIndex"
+          *ngFor="let _ of [].constructor(this.borrowedBooksPageResponse.totalPages); let pageIndex = index"
+          (click)="goToPage(pageIndex)"
+          class="page-item"
+        >
+          <a class="page-link" href="javascript:void(0)">{{ pageIndex + 1 }}</a>
         </li>
         <li class="page-item">
-          <a (click)="goToNext()" [class.disabled]="isLastPage" class="page-link" href="javascript:void (0)"
-             aria-label="Next">
+          <a (click)="goToNext()" [class.disabled]="isLastPage" class="page-link" href="javascript:void(0)" aria-label="Next">
             <i class="fa-solid fa-angle-right"></i>
           </a>
         </li>
         <li class="page-item">
-          <a (click)="goToLast()" [class.disabled]="isLastPage" class="page-link" href="javascript:void (0)"
-             aria-label="Last">
+          <a (click)="goToLast()" [class.disabled]="isLastPage" class="page-link" href="javascript:void(0)" aria-label="Last">
             <i class="fa-solid fa-angle-double-right"></i>
           </a>
         </li>

@@ -1,0 +1,59 @@
+/* Default table styling remains for desktop */
+.returned-books-table th,
+.returned-books-table td {
+  vertical-align: middle;
+}
+
+/* Responsive for small screens */
+@media (max-width: 768px) {
+  .responsive-table-wrapper {
+    overflow-x: auto; /* horizontal scroll if needed */
+  }
+
+  .returned-books-table,
+  .returned-books-table thead,
+  .returned-books-table tbody,
+  .returned-books-table th,
+  .returned-books-table td,
+  .returned-books-table tr {
+    display: block;
+  }
+
+  .returned-books-table thead tr {
+    display: none; /* hide headers on small screens */
+  }
+
+  .returned-books-table tbody tr {
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+  }
+
+  .returned-books-table tbody tr td {
+    /* Stack cells vertically */
+    position: relative;
+    padding-left: 50%;
+    text-align: left;
+    border: none;
+    border-bottom: 1px solid #eee;
+    white-space: normal;
+  }
+
+  .returned-books-table tbody tr td:last-child {
+    border-bottom: 0;
+  }
+
+  /* Show label before each cell from data-label attribute */
+  .returned-books-table tbody tr td::before {
+    content: attr(data-label);
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-weight: 600;
+    color: #333;
+    white-space: nowrap;
+  }
+}

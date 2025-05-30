@@ -1,29 +1,48 @@
-
-.navbar {
-  background: linear-gradient(90deg, #020024 0%, #090979 35%, #00d4ff 100%);;
+.custom-navbar {
+  background: linear-gradient(90deg, #020024 0%, #090979 35%, #00d4ff 100%);
   padding: 1rem;
-  height: 68px;
+  min-height: 68px;
+  z-index: 1030; /* keep on top */
+  width: 100%;
+}
+
+/* fixed-top navbar positioning */
+.fixed-top {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .navbar-brand {
-  color: #000000;
+  color: #ffffff;
   font-size: 2rem;
   font-weight: bold;
 }
 
-.form-control {
-  border-radius: 0.20rem;
-  height: 33px; /* Adjust height */
-  font-size: 0.75rem; /* Adjust font size */
-  padding: 0.25rem 0.5rem; /* Adjust padding */
+.form-wrapper {
+  flex-wrap: nowrap; /* no wrap on desktop */
+  gap: 0.5rem;
+}
+
+.form-control,
+.custom-width {
+  height: 33px;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+}
+
+.search-input {
+  width: 200px;
+  min-width: 150px;
 }
 
 .btn-outline-success {
   color: #ffffff;
   border-color: #000000;
-  height: 33px; /* Adjust height */
-  font-size: 0.75rem; /* Adjust font size */
-  padding: 0.25rem 0.5rem; /* Adjust padding */
+  height: 33px;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
 }
 
 .btn-outline-success:hover {
@@ -32,35 +51,34 @@
   border-color: #ffffff;
 }
 
-/* Icons styling */
-.navbar-nav .nav-link i {
-  margin-right: 0.5rem;
+.white-text,
+.white-text i {
+  color: white;
+}
+
+/* MAIN CONTENT padding to clear fixed navbar height */
+.content-wrapper {
+  padding-top: 68px; /* default navbar height */
 }
 
 /* Responsive adjustments */
 @media (max-width: 992px) {
-  .navbar-nav {
-    text-align: center;
+  .form-wrapper {
+    flex-wrap: wrap; /* allow wrap on smaller screens */
+    gap: 0.75rem;
   }
-  .navbar-nav .nav-link {
-    margin: 0.5rem 0;
-  }
-}
-
-@media (max-width: 768px) {
-  .navbar-nav {
-    flex-direction: column;
-    align-items: center;
-  }
-  .navbar-nav .nav-link {
-    padding: 0.5rem 1rem;
-  }
-  .form-control {
-    width: 80%;
-    margin-bottom: 0.5rem;
-  }
+  .search-input,
+  .custom-width,
   .btn-outline-success {
-    width: 100%;
+    width: 100% !important; /* full width inputs/buttons on smaller */
+  }
+  form.d-flex {
+    justify-content: center;
+  }
+
+  /* Increase padding-top for taller navbar when expanded */
+  .content-wrapper {
+    padding-top: 160px; /* approx expanded height */
   }
 }
 
@@ -68,18 +86,10 @@
   .navbar-brand {
     font-size: 1.25rem;
   }
-  .navbar-nav .nav-link {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
+  .nav-link {
+    font-size: 0.85rem;
   }
-  .navbar-nav .nav-link i {
-    font-size: 0.75rem;
+  .nav-link i {
+    font-size: 0.85rem;
   }
-}
-
-.custom-width {
-  width: 150px; /* Adjust the width as needed */
-}
-.white-text, .white-text i {
-  color: white;
 }

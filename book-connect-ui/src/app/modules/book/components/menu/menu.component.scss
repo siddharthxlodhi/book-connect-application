@@ -1,8 +1,6 @@
-
 .navbar {
-  background: linear-gradient(90deg, #020024 0%, #090979 35%, #00d4ff 100%);;
+  background: linear-gradient(90deg, #020024 0%, #090979 35%, #00d4ff 100%);
   padding: 1rem;
-  height: 68px;
 }
 
 .navbar-brand {
@@ -11,19 +9,30 @@
   font-weight: bold;
 }
 
-.form-control {
-  border-radius: 0.20rem;
-  height: 30px; /* Adjust height */
-  font-size: 0.75rem; /* Adjust font size */
-  padding: 0.25rem 0.5rem; /* Adjust padding */
+// Increased font size here
+.nav-link,
+span,
+button,
+.form-control,
+.btn-outline-success,
+.dropdown-item {
+  font-size: 1rem !important;
 }
+
+.form-control.search-input {
+  border-radius: 0.20rem;
+  height: 40px;        /* increased height */
+  padding: 0.3rem 0.75rem;  /* a bit more padding */
+  width: 200px;        /* increased width */
+  font-size: 1rem;     /* bigger font size */
+}
+
 
 .btn-outline-success {
   color: #ffffff;
   border-color: #000000;
-  height: 30px; /* Adjust height */
-  font-size: 0.75rem; /* Adjust font size */
-  padding: 0.25rem 0.5rem; /* Adjust padding */
+  height: 34px;
+  padding: 0.25rem 0.5rem;
 }
 
 .btn-outline-success:hover {
@@ -32,33 +41,30 @@
   border-color: #ffffff;
 }
 
-/* Icons styling */
 .navbar-nav .nav-link i {
   margin-right: 0.5rem;
 }
 
-/* Responsive adjustments */
 @media (max-width: 992px) {
   .navbar-nav {
     text-align: center;
   }
+
   .navbar-nav .nav-link {
     margin: 0.5rem 0;
   }
-}
 
-@media (max-width: 768px) {
-  .navbar-nav {
+  .nav-right {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    gap: 0.5rem;
+    width: 100%;
   }
-  .navbar-nav .nav-link {
-    padding: 0.5rem 1rem;
+
+  .search-input {
+    width: 100%;
   }
-  .form-control {
-    width: 80%;
-    margin-bottom: 0.5rem;
-  }
+
   .btn-outline-success {
     width: 100%;
   }
@@ -68,63 +74,53 @@
   .navbar-brand {
     font-size: 1.25rem;
   }
+
   .navbar-nav .nav-link {
-    font-size: 0.75rem;
+    font-size: 0.9rem;
     padding: 0.25rem 0.5rem;
   }
+
   .navbar-nav .nav-link i {
-    font-size: 0.75rem;
+    font-size: 0.85rem;
+  }
+
+  .dropdown-menu {
+    font-size: 0.85rem;
   }
 }
+
 li > a {
   &:hover {
     background-color: #6bbdff;
     border-radius: 5px;
     text-decoration: underline;
   }
+
   &.active {
     color: #1293ef;
     border-radius: 5px;
   }
 }
 
-.clickable-image {
-  cursor: pointer;
-  width: 24px; /* Adjust size as needed */
-  height: 24px; /* Adjust size as needed */
-}
-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.white-text, .white-text i {
-  color: white;
-  font-size: 8px;
-}
-/* Change the color of the bell icon */
 .fas.fa-bell {
-  color: #ffffff; /* Example color */
+  color: #ffffff;
 }
 
-/* Customize the badge */
 .badge-notification {
-  background-color: #ff5733; /* Example color */
-  font-size: 0.8rem; /* Example size */
+  background-color: #ff5733;
+  font-size: 0.8rem;
 }
 
-/* Customize the dropdown menu */
 .dropdown-menu {
-  background-color: #151e34; /* Example background color */
-  border-radius: 10px; /* Example border radius */
+  background-color: #151e34;
+  border-radius: 10px;
 }
 
-/* Customize the dropdown items */
 .dropdown-item {
-  color: #ffffff; /* Example text color */
-  padding: 10px 20px; /* Example padding */
+  color: #ffffff;
+  padding: 10px 20px;
 }
 
 .dropdown-item:hover {
-  background-color: #555; /* Example hover background color */
+  background-color: #555;
 }
