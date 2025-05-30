@@ -8,10 +8,9 @@
   <!-- Success Card -->
   <div id="card" *ngIf="isOkay && !isLoading; else activationError">
     <div id="upper-side">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="48" height="48">
         <path d="M0 0h24v24H0z" fill="none"/>
-        <path
-          d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.5 18l-5-5 1.414-1.414L10.5 15.172l7.086-7.086L19 9.5l-8.5 8.5z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm-1.5 18l-5-5 1.414-1.414L10.5 15.172l7.086-7.086L19 9.5l-8.5 8.5z"/>
       </svg>
       <h3 id="status">Success</h3>
     </div>
@@ -26,10 +25,9 @@
     <div id="MyFailureCard" *ngIf="!isOkay && !isLoading">
       <div id="failure-card">
         <div id="failure-upper-side">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white" width="48" height="48">
             <path d="M0 0h24v24H0z" fill="none"/>
-            <path
-              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-13h2v6h-2zm0 8h2v2h-2z"/>
           </svg>
           <h3 id="failure-status">Activation Failed</h3>
         </div>
@@ -58,7 +56,7 @@
         (codeCompleted)="onCodeCompleted($event)">
       </code-input>
       <div class="text-center mt-5">
-        <span class="d-block mobile-text">Don't receive the code?</span>
+        <span class="d-block mobile-text">Didn't receive the code?</span>
         <span class="font-weight-bold text-danger cursor">Resend</span>
       </div>
     </div>

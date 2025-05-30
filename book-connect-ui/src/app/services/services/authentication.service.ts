@@ -88,7 +88,9 @@ export class AuthenticationService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  activate$Response(params: Activate$Params, context?: HttpContext): Observable<StrictHttpResponse<string>> {
+  activate$Response(params: Activate$Params, context?: HttpContext): Observable<StrictHttpResponse<{
+[key: string]: string;
+}>> {
     return activate(this.http, this.rootUrl, params, context);
   }
 
@@ -98,9 +100,15 @@ export class AuthenticationService extends BaseService {
    *
    * This method doesn't expect any request body.
    */
-  activate(params: Activate$Params, context?: HttpContext): Observable<string> {
+  activate(params: Activate$Params, context?: HttpContext): Observable<{
+[key: string]: string;
+}> {
     return this.activate$Response(params, context).pipe(
-      map((r: StrictHttpResponse<string>): string => r.body)
+      map((r: StrictHttpResponse<{
+[key: string]: string;
+}>): {
+[key: string]: string;
+} => r.body)
     );
   }
 

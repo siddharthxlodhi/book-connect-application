@@ -9,16 +9,16 @@ import { StrictHttpResponse } from '../../strict-http-response';
 import { RequestBuilder } from '../../request-builder';
 
 
-export interface Activate$Params {
-  activationToken: string;
+export interface Upload$Params {
+      body?: {
+'file': Blob;
+}
 }
 
-export function activate(http: HttpClient, rootUrl: string, params: Activate$Params, context?: HttpContext): Observable<StrictHttpResponse<{
-[key: string]: string;
-}>> {
-  const rb = new RequestBuilder(rootUrl, activate.PATH, 'get');
+export function upload(http: HttpClient, rootUrl: string, params?: Upload$Params, context?: HttpContext): Observable<StrictHttpResponse<string>> {
+  const rb = new RequestBuilder(rootUrl, upload.PATH, 'post');
   if (params) {
-    rb.query('activationToken', params.activationToken, {});
+    rb.body(params.body, 'application/json');
   }
 
   return http.request(
@@ -26,11 +26,9 @@ export function activate(http: HttpClient, rootUrl: string, params: Activate$Par
   ).pipe(
     filter((r: any): r is HttpResponse<any> => r instanceof HttpResponse),
     map((r: HttpResponse<any>) => {
-      return r as StrictHttpResponse<{
-      [key: string]: string;
-      }>;
+      return r as StrictHttpResponse<string>;
     })
   );
 }
 
-activate.PATH = '/auth/activate-account';
+upload.PATH = '/images/upload';

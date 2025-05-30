@@ -11,8 +11,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class ApiConfiguration {
-  // rootUrl: string = 'http://localhost:8080/api/v1';
-  rootUrl: string = 'https://book-connect-application.onrender.com/api/v1';
+  rootUrl: string = 'http://localhost:8080/api/v1';
 }
 
 /**

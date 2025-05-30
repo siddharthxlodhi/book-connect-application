@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 import java.security.SecureRandom;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
@@ -66,21 +67,33 @@ public class AuthenticationService {
     }
 
     //    @Transactional
-    public ResponseEntity<String> activateAccount(String activationToken) throws MessagingException {
-        Token token = tokenRepository.findByActivationToken(activationToken).orElseThrow(() -> new ActivationTokenException("Invalid Token:" + activationToken));
+    public ResponseEntity<Map<String, String>> activateAccount(String activationToken) throws MessagingException {
+        Token token = tokenRepository.findByActivationToken(activationToken)
+                .orElseThrow(() -> new ActivationTokenException("Invalid Token:" + activationToken));
+
         if (LocalDateTime.now().isAfter(token.getExpiresAt())) {
             sendValidationEmail(token.getUser());
-            throw new ActivationTokenException("Token:" + activationToken + " has expired,a new token has been sent to " + token.getUser().getEmail());
+            throw new ActivationTokenException("Token:" + activationToken + " has expired, a new token has been sent to " + token.getUser().getEmail());
         }
+
         User user = userRepository.findById(token.getUser().getId())
                 .orElseThrow(() -> new ActivationTokenException("User not found under this token"));
+
         user.setEnabled(true);
         userRepository.save(user);
+
         token.setValidatedAt(LocalDateTime.now());
         tokenRepository.save(token);
-        log.info("Account activated:{}", user.getId());
-        return new ResponseEntity<>("Account activated successfully", HttpStatus.OK);
+
+        log.info("Account activated: {}", user.getId());
+
+        // ✅ Return a JSON object
+        Map<String, String> response = new HashMap<>();
+        response.put("message", "Account activated successfully");
+
+        return ResponseEntity.ok(response);
     }
+
 
     public AuthenticationResponse authenticate(AuthenticationRequest authenticationRequest) {
         var authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(

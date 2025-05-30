@@ -7,8 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
@@ -32,7 +33,7 @@ public class AuthenticationController {
     }
 
     @GetMapping("/activate-account")
-    public ResponseEntity<String> activate(@RequestParam String activationToken) throws MessagingException {
+    public ResponseEntity<Map<String, String>> activate(@RequestParam String activationToken) throws MessagingException {
         return authenticationService.activateAccount(activationToken);
     }
 
