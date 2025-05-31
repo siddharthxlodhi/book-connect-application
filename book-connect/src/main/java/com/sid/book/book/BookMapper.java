@@ -32,7 +32,7 @@ public class BookMapper {
                 .shareable(book.isShareable())
                 .rate(book.getRate())
                 .owner(book.getOwner().getFullName())
-                .cover(readFileFromLocation(book.getBookCover()))
+                .cover(book.getBookCover())
                 .build();
 
     }

@@ -12,7 +12,6 @@
     "version": "1.0"
   },
 
-
   "servers": [
 
     {
@@ -1018,6 +1017,34 @@
           }
         }
       }
+    },
+
+    "/api/ping": {
+
+      "get": {
+
+        "tags": [
+          "ping-controller"
+        ],
+        "operationId": "ping",
+
+        "responses": {
+
+          "200": {
+            "description": "OK",
+
+            "content": {
+
+              "application/json": {
+
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
 
@@ -1547,8 +1574,7 @@
           },
 
           "cover": {
-            "type": "string",
-            "format": "byte"
+            "type": "string"
           },
 
           "archived": {

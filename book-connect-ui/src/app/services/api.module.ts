@@ -12,6 +12,7 @@ import { BookService } from './services/book.service';
 import { AuthenticationService } from './services/authentication.service';
 import { UserControllerService } from './services/user-controller.service';
 import { GoogleBookService } from './services/google-book.service';
+import { PingControllerService } from './services/ping-controller.service';
 
 /**
  * Module that provides all services and configuration.
@@ -27,6 +28,7 @@ import { GoogleBookService } from './services/google-book.service';
     AuthenticationService,
     UserControllerService,
     GoogleBookService,
+    PingControllerService,
     ApiConfiguration
   ],
 })

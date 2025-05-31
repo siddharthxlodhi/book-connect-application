@@ -42,7 +42,7 @@ export class BookCardComponent {
 
   get bookCover() {
     if (this._book.cover) {
-      return 'data:image/jpg;base64,' + this._book.cover
+      return this._book.cover
     }
     return "https://viobqsdmsmszszqbioqc.supabase.co/storage/v1/object/public/uploads/1748460201590-german.jpg";
   }
